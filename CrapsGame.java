@@ -175,3 +175,4 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
       CrapsGame basicGui = new CrapsGame();
       basicGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
+}
