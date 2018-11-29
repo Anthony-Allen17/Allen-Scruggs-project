@@ -105,6 +105,7 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          return Amount - iAmount;
       }
    }
+ BenchMark3
    /**
    @author Anthony Allen
    * betCheck method is a safety feature that checks to make sure that the player bet is with in the it's limits.
@@ -120,7 +121,8 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          return 0;
          }
         }
-         /**
+      /**
+master
        * This is where the actionPerformed method is created, allowing GUI to run, 
        * and be accessible.
        */
@@ -135,8 +137,10 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          String credit =(Pot.getText());
          int placed = Integer.parseInt(bookie);
          int fargo  = Integer.parseInt(credit);
+ BenchMark3
          int place = betCheck(placed,fargo);
          int damage = bet(total,place,fargo,t1,t2);
+master
          String round = Integer.toString(damage);
          Pot.setText(round);
       
