@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
@@ -174,4 +175,3 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
       CrapsGame basicGui = new CrapsGame();
       basicGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
-}
