@@ -66,10 +66,10 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
       setVisible(true);
    }
    /**
+   *@author Anthony Allen
    * Methods Dice1 and Dice2 simulate two 6 sided dice being rolled.
-   
    **/
-   public int Dice1(){
+   public int Dice1() {
       Random t = new Random();
       int resultOne = 0;
       resultOne = t.nextInt(6);
@@ -83,6 +83,28 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
       resultTwo++;
       return resultTwo;
    }
+   /**
+   @author Anthony Allen
+   *This method bet determines whether or not a roll was one by rolling a seven, eleven or doubles except for rolling a two.
+   *It then either adds the winnings or takes away the loss from the bank.
+   *@param win it takes in the int value forthe total a player has rolled.
+   *@param iAmount takes in the int amount that the player has bid on that hand.
+   *@param Amount takes in the int amount the player has in the bank on that current hand.
+   *@param df1 takes the value of the first dice in after it's rolled;
+   *@param df2 takes the value of the second dice in after its rolled;
+   **/ 
+   public int bet(int win,int  iAmount,int Amount,int df1, int df2) {
+      if( win == 7 ){
+         return iAmount + Amount;
+      }else if (win == 11)
+      {
+         return Amount + iAmount;
+      } else if ( df1 == df2 && df1 > 1) { 
+         return iAmount + Amount;
+      }else{
+         return Amount - iAmount;
+      }
+   }
       /**
        * This is where the actionPerformed method is created, allowing GUI to run, 
        * and be accessible.
@@ -94,8 +116,17 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          int total = t1+t2;
          dice1.setText("You rolled a"+" "+t1+" "+ "and a"+" " + t2);
          dice2.setText("Your total is" +" "+total);
+         String bookie =(chips.getText());
+         String credit =(Pot.getText());
+         int placed = Integer.parseInt(bookie);
+         int fargo  = Integer.parseInt(credit);
+         int damage = bet(total,placed,fargo,t1,t2);
+         String round = Integer.toString(damage);
+         Pot.setText(round);
+      
       
       }
+      
    }
      /**
       * Main method where GUI is called, and runs through ActionEvent 
