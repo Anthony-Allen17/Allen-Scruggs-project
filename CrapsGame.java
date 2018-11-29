@@ -105,7 +105,39 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          return Amount - iAmount;
       }
    }
+   /**
+   @author Anthony Allen
+   * betCheck method is a safety feature that checks to make sure that the player bet is with in the it's limits.
+   * These limits are the number being a positve interger and the number being equal or less then the amount the player has in the bank.
+   * If these are broken the bet is translated to a zero to keep the game running and unaffeted by illegal bets.
+   * @param face2 takes in the integer for the bet that is placed by the player.
+   * @param iA takes in the integer for what thee player has in the bank.
+   **/ 
+   public int betCheck(int face2,int iA){
+      if( face2 <= iA && face2>=0) {
+         return face2;
+      }else{
+         return 0;
+         }
+        }
       /**
+      * This method betCheck2 checks the bet and gives string out put to advise the player when they have made an illegal bet.
+      * @param face3 this takes in the int value of thee bet the player has made.
+      * @param iA1 this takes in the int value of what the player has in the bank.
+       **/
+    public String betCheck2(int face3,int iA1){
+      if( face3 > iA1) {
+         return "Insufficent funds in the bank";
+      }else if(face3 < 0) {
+         return "Make bet positive";
+      }else if(face3 <= iA1){
+         return "";
+      }else{
+         return "";
+       }
+      }
+
+         /**
        * This is where the actionPerformed method is created, allowing GUI to run, 
        * and be accessible.
        */
@@ -120,11 +152,12 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          String credit =(Pot.getText());
          int placed = Integer.parseInt(bookie);
          int fargo  = Integer.parseInt(credit);
-         int damage = bet(total,placed,fargo,t1,t2);
+         int place = betCheck(placed,fargo);
+         int damage = bet(total,place,fargo,t1,t2);
          String round = Integer.toString(damage);
          Pot.setText(round);
-      
-      
+       betOp.setText(betCheck2(placed,fargo));
+
       }
       
    }
@@ -132,8 +165,7 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
       * Main method where GUI is called, and runs through ActionEvent 
       * then ActionPerformed is accessed.
       */
-   public static void main(String[] work)
-   {
+   public static void main(String[] work) {
       CrapsGame basicGui = new CrapsGame();
       basicGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
