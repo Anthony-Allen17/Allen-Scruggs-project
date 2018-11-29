@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
@@ -118,14 +119,15 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          return face2;
       }else{
          return 0;
-         }
-        }
+      }
+   }
       /**
+      @author Anthony Allen
       * This method betCheck2 checks the bet and gives string out put to advise the player when they have made an illegal bet.
       * @param face3 this takes in the int value of thee bet the player has made.
       * @param iA1 this takes in the int value of what the player has in the bank.
        **/
-    public String betCheck2(int face3,int iA1){
+   public String betCheck2(int face3,int iA1){
       if( face3 > iA1) {
          return "Insufficent funds in the bank";
       }else if(face3 < 0) {
@@ -134,10 +136,9 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          return "";
       }else{
          return "";
-       }
       }
-
-         /**
+   }
+       /**
        * This is where the actionPerformed method is created, allowing GUI to run, 
        * and be accessible.
        */
@@ -156,10 +157,15 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
          int damage = bet(total,place,fargo,t1,t2);
          String round = Integer.toString(damage);
          Pot.setText(round);
-       betOp.setText(betCheck2(placed,fargo));
-
-      }
+         betOp.setText(betCheck2(placed,fargo));
+      } else if(click.getSource()== reset){
+         Pot.setText("5000");
+         dice1.setText("");
+         dice2.setText("");
+         chips.setText("0");
+      }else{
       
+      }
    }
      /**
       * Main method where GUI is called, and runs through ActionEvent 
@@ -169,4 +175,3 @@ public class CrapsGame extends JFrame implements java.awt.event.ActionListener {
       CrapsGame basicGui = new CrapsGame();
       basicGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
-}
